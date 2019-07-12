@@ -1,13 +1,14 @@
 package IOUtil;
 
-import order.Order;
-import order.Orders;
+import entity.FR;
+import entity.NFR;
+import entity.NFRs;
+import entity.FRs;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class InputReader {
@@ -18,47 +19,41 @@ public class InputReader {
             System.out.println("absolutepath=" + file.getAbsolutePath());
             System.out.println("name=" + file.getName());
             extractProduceInfo(file);
-        }else if (file.isDirectory()) {
+        } else if (file.isDirectory()) {
             String[] fileList = file.list();
             for (int i = 0; i < Objects.requireNonNull(fileList).length; i++) {
                 readFile(filepath + "\\" + fileList[i]);
             }
         }
-
     }
 
-    public static void extractProduceInfo(File file){
+    public static void extractProduceInfo(File file) {
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             String[] temp;
-            while((line = bufferedReader.readLine())!=null){
-                if(line.contains("instance")) {
-                    Order order = new Order();
-                    order.instanceName = line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains("NFR")) {
+                    NFR nfr = new NFR();
                     line = bufferedReader.readLine();
-                    temp = line.split("\\s+");
-                    //assertEquals(2, temp.length);
-                    order.machineCount = Integer.valueOf(temp[1]);
-                    order.partCount = Integer.valueOf(temp[0]);
-                    //System.out.println(Order.machineCount + "  " + Order.partCount);
-
-                    for (int i = 0; i < order.partCount; i++) {
-                        ArrayList<Integer> list = new ArrayList<>();
-                        line = bufferedReader.readLine();
-                        temp = line.split("\\s+");
-                        for (int j = 1; j < 2 * order.machineCount; j += 2) {
-                            list.add(Integer.valueOf(temp[j]));
-                        }
-                        //System.out.println(list);
-                        order.produceInfo.add(list);
-                    }
-                    Orders.orders.add(order);
+                    int index = line.indexOf(":");
+                    nfr.NFRname = line.substring(0, index);
+                    nfr.NFRcontent = line.substring(index + 2);
+                    System.out.println(nfr.NFRname + "\r\n" + nfr.NFRcontent);
+                    NFRs.NFRlist.add(nfr);
+                } else if (line.contains("FR")) {
+                    FR fr = new FR();
+                    line = bufferedReader.readLine();
+                    int index = line.indexOf(":");
+                    fr.FRname = line.substring(0, index);
+                    fr.FRcontent = line.substring(index + 2);
+                    System.out.println(fr.FRname + "\r\n" + fr.FRcontent);
+                    FRs.FRlist.add(fr);
                 }
             }
-
-        }catch(IOException e){
+        } catch (
+                IOException e) {
             e.printStackTrace();
         }
     }
