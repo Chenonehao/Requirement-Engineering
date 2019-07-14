@@ -10,7 +10,7 @@ public class OutputWriter {
     static BufferedWriter out;
 
     public static void init() {
-        writeName = new File("output\\output.txt"); // 相对路径，如果没有则要建立一个新的output.txt文件
+        writeName = new File("output\\output_" + "of_" + InputReader.instanceName + ".txt"); // 相对路径，如果没有则要建立一个新的output.txt文件
         try {
             writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
             FileWriter writer = new FileWriter(writeName);
@@ -25,10 +25,9 @@ public class OutputWriter {
      */
     public static void writeFile(String info) {
         try {
-            {
-                out.write(info + "\r\n");
-                out.flush(); // 把缓存区内容压入文件
-            }
+            out.write(info + "\r\n");
+            out.flush(); // 把缓存区内容压入文件
+
         } catch (IOException e) {
             e.printStackTrace();
         }
