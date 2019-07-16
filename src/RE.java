@@ -21,9 +21,13 @@ public class RE {
             System.out.println(fr.words);
             System.out.println(fr.relate1 + " " + fr.relate2 + "  " + fr.relate3);
         }
-        System.out.println(Dic.wordsOfIns1);
-        System.out.println(Dic.wordsOfIns2);
-        System.out.println(Dic.wordsOfIns3);
+        System.out.println("wordsOfIns1"+"/r/n"+Dic.wordsOfIns1);
+        System.out.println("wordsOfIns2"+"/r/n"+Dic.wordsOfIns2);
+        System.out.println("wordsOfIns3"+"/r/n"+Dic.wordsOfIns3);
+
+        System.out.println("words_tf_idf1"+"/r/n"+Dic.words_tf_idf1);
+        System.out.println("words_tf_idf2"+"/r/n"+Dic.words_tf_idf2);
+        System.out.println("words_tf_idf3"+"/r/n"+Dic.words_tf_idf3);
         for (FR fr : FRs.FRlist) {
             System.out.println();
             System.out.println(fr.FRname);
