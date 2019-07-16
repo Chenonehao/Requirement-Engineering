@@ -6,7 +6,8 @@ import java.util.HashMap;
 
 public class Dic {
     public static ArrayList<String> dic = new ArrayList<>(Arrays.asList("the","of","be","on","shall","to","will","in","of",
-            "and","for","no","a","an","by","are","not","there","from","if","with","this","their","used","using","all","other"));
+            "and","for","no","a","an","by","are","not","there","from","if","with","this","their","used","using",
+            "all","other","can"));
     public static HashMap<String,Integer> wordsOfIns1= new HashMap<>();
     public static HashMap<String,Integer> wordsOfIns2= new HashMap<>();
     public static HashMap<String,Integer> wordsOfIns3= new HashMap<>();
@@ -62,7 +63,7 @@ public class Dic {
             count+=words_tf.get(word);
         }
         for(String word:words_df.keySet()){
-            words_idf.put(word,Math.log(count/words_df.get(word)));
+            words_idf.put(word,Math.pow(Math.log(count/words_df.get(word)),3));
         }
     }
 

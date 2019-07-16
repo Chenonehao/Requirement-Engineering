@@ -18,10 +18,10 @@ public class Metrics {
 
     public static void main(String[] args){
         //Please change this path to the path of student's outputs
-        String tool_outputs_path = "E:/IntelliJ/Projects/Requirement-Engineering/output/output_" + "of_" + InputReader.instanceName + ".txt";
+        String tool_outputs_path = "E:/IntelliJ/IdeaProjects/Requirement-Engineering/output/output_" + "of_" + InputReader.instanceName + ".txt";
 
         //Please change this path to the path of your local answer set file
-        String answer_set_path = "E:/IntelliJ/Projects/Requirement-Engineering/ans.txt";
+        String answer_set_path = "E:/IntelliJ/IdeaProjects/Requirement-Engineering/ans.txt";
 
         Map<String,Integer[]> answer_set=read(answer_set_path);
         Map<String,Integer[]> tool_outputs=read(tool_outputs_path);

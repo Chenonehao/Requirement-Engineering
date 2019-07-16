@@ -127,6 +127,7 @@ public class FR {
         }
         mo1=Math.sqrt(mo1);
         mo2=Math.sqrt(mo2);
+
         return up/(mo1*mo2);
     }
 
