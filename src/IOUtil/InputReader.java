@@ -17,9 +17,9 @@ public class InputReader {
     public static void readFile(String filepath) {
         File file = new File(filepath);
         if (!file.isDirectory()) {
-            if (file.getName().contains("ans"))
+            if (file.getName().contains("trainingset"))
                 readAns(file);
-            else {
+            else if(filepath.contains("input")) {
                 extractProduceInfo(file);
                 instanceName = file.getName();
             }
@@ -40,8 +40,8 @@ public class InputReader {
             int i = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("FR")) {
-                    FR fr = FRs.FRlist.get(i);
                     temp = line.split(",");
+                    FR fr = FRs.FRlist.get(Integer.parseInt(temp[0].replace("FR",""))-1);
                     fr.relate1 = Integer.parseInt(temp[1]);
                     fr.relate2 = Integer.parseInt(temp[2]);
                     fr.relate3 = Integer.parseInt(temp[3]);
